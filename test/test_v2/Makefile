@@ -9,11 +9,11 @@ LDFLAGS = -Wl,-rpath,$(LDIR)
 LIBS =-lpmix -lpthread -levent
 
 # Executables
-EXE = pmix_test 
+EXE = pmix_test test_init_fin
 
 # List of all .c source files.
 PCFILES = pmix_test.c test_common.c cli_stages.c utils.c test_server.c server_callbacks.c
-TCFILES = 
+TCFILES = test_init_fin.c
 CFILES = $(PCFILES) $(TCFILES)
 
 OBJ = $(CFILES:%.c=%.o)
@@ -28,6 +28,9 @@ clean:
 .PHONY: clean
 
 pmix_test: $(POBJ) 
+	$(CC) -o $@ $^ $(CFLAGS) -L$(LDIR) $(LDFLAGS) $(LIBS)
+
+test_init_fin: $(TOBJ)
 	$(CC) -o $@ $^ $(CFLAGS) -L$(LDIR) $(LDFLAGS) $(LIBS)
 
 %.o : %.c
