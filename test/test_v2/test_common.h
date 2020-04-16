@@ -37,8 +37,6 @@
 
 #define TEST_CREDENTIAL "dummy"
 
-;
-
 #define PMIXT_CHECK_EXPECT(stmt, expected_val, params) \
 do {                                                   \
    int pmix_rc = (stmt);                               \
